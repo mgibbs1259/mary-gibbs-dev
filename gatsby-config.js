@@ -1,6 +1,6 @@
 module.exports = {
 	siteMetadata: {
-		title: `Another Data Science/Tech Blog`,
+		title: `Another Data Science & Tech Blog`,
 		author: {
 			name: `Mary Gibbs`,
 			summary: `who lives and works as a data scientist in the DC area.`,
