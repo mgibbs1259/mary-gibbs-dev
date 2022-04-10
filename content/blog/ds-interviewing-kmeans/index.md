@@ -1,5 +1,5 @@
 ---
-title: Data Science Interviewing is Broken Pt. 1: KMeans Edition
+title: "Data Science Interviewing is Broken Pt. 1: KMeans Edition"
 date: "2022-03-12"
 description: "Data science interviewing is broken. In this several part series, I will explain/implement solutions to problems that I have come across during the data science interview process that I thought were a waste of time. Hopefully, I (and you, my dear sweet reader) will never encounter them again."
 ---
