@@ -1,7 +1,7 @@
 ---
-title: "Data Science Interviewing is Broken Pt. 1: KMeans Edition"
+title: "Data Science Interviewing Pt. 1: KMeans Edition"
 date: "2022-03-12"
-description: "Data science interviewing is broken. In this several part series, I will explain/implement solutions to problems that I have come across during the data science interview process that I thought were a waste of time. Hopefully, I (and you, my dear sweet reader) will never encounter them again."
+description: "Data science interviewing is broken. In this several part series, I will explain/implement solutions to problems that I have come across during the data science interview process that I thought were not really effective at gauging a candidate's skills. Hopefully, I (and you, my dear sweet reader) will never encounter them again."
 ---
 
 Data science is a broad field, which results in an extremely varied interviewing process. It's like the Wild West; there are no rules, no structure, nothing... During a past interview, I was subjected to an hour and a half coding challenge in which I was asked to implement KMeans from scratch in my programing language of choice. Giddy up cowperson, in this post, I'll provide an overview of KMeans followed by my basic implementation of it in Python.
