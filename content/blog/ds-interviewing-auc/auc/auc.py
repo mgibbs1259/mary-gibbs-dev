@@ -1,62 +1,43 @@
-import logging
+from typing import List
 
-import numpy as np
-from sklearn.datasets import load_iris
-from sklearn.cluster import KMeans
+from sklearn import metrics
 
 
-def initalize_centroids(data: np.ndarray, k: int) -> np.ndarray:
-    rng = np.random.default_rng()
-    initial_centroids = rng.choice(data, k, axis=0)
-    return initial_centroids
+def calculate_trapezoidal_rule_area(x: List[float], y: List[float]) -> float:
+    """Calculates the area under the curve using the trapezoidal rule
 
+    Args:
+        x (list or array): Array of x values
+        y (list or array): Array of y values corresponding to each x value
 
-def assign_points_to_centroids(data: np.ndarray, k: int, centroids: np.ndarray) -> list:
-    distances = np.empty(shape=(data.shape[0], k))
-    for i in range(k):
-        distances[:, i] = np.sqrt(np.sum((data - centroids[i]) ** 2, axis=1))
-    assigned_centroids = distances.argmin(axis=1)
-    return assigned_centroids
-
-
-def update_centroids(data: np.ndarray, k: int, assigned_centroids: list) -> np.ndarray:
-    updated_centroids = np.empty(shape=(k, data.shape[1]))
-    for i in range(k):
-        updated_centroids[i, :] = data[assigned_centroids == i].mean(axis=0)
-    return updated_centroids
-
-
-def stop_kmeans(
-    iterations: int,
-    max_interations: int,
-    previous_centroids: np.ndarray,
-    centroids: np.ndarray,
-) -> bool:
-    if iterations > max_interations:
-        logging.info(f"Max iteractions {max_interations} reached")
-        return True
-    return (previous_centroids == centroids).all()
-
-
-def perform_kmeans(data: np.ndarray, k: int, max_interations: int) -> np.ndarray:
-    centroids = initalize_centroids(iris_data.data, k)
-
-    iterations = 0
-    previous_centroids = None
-    while not stop_kmeans(iterations, max_interations, previous_centroids, centroids):
-        iterations += 1
-        previous_centroids = centroids
-        assigned_centroids = assign_points_to_centroids(data, k, centroids)
-        centroids = update_centroids(data, k, assigned_centroids)
-
-    return centroids
+    Returns:
+        float: The estimated area under the curve
+    
+    Raises:
+        ValueError: If the lengths of x and y are different
+    """
+    if len(x) != len(y):
+        raise ValueError("x and y must be the same length")
+    
+    areas_sum = 0.0
+    
+    # Area of a trapezoid is 1/2 x 
+    # (sum of the lengths of the parallel sides) x 
+    # perpendicular distance between parallel sides
+    for i in range(1, len(x)):
+        y_sum = y[i] + y[i-1]
+        width = x[i] - x[i-1]
+        areas_sum += 0.5 * y_sum * width
+    
+    return round(areas_sum, 2)
 
 
 if __name__ == "__main__":
-    iris_data = load_iris()
+    x = [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5]
+    y = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 0.8, 0.6, 0.4, 0.2, 0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 0.8, 0.6, 0.4, 0.2]
+    
+    auc = calculate_trapezoidal_rule_area(x, y)
+    print(f"My implementation: {auc}\n")
 
-    centroids = perform_kmeans(data=iris_data.data, k=3, max_interations=5000)
-    print(f"My implementation: {centroids}\n")
-
-    sklearn_kmeans_centroids = KMeans(n_clusters=3, random_state=0).fit(iris_data.data)
-    print(f"scikit-learn implementation: {sklearn_kmeans_centroids.cluster_centers_}")
+    sklearn_auc = metrics.auc(x, y)
+    print(f"scikit-learn implementation: {sklearn_auc}")
