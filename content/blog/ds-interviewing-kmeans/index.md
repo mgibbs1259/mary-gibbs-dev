@@ -1,10 +1,10 @@
 ---
 title: "Data Science Interviewing Pt. 2: KMeans Edition"
 date: "2022-03-12"
-description: "Data science interviewing is broken. In this several part series, I will explain/implement solutions to problems that I have come across during the data science interview process that I thought were not really effective at gauging a candidate's skills. Hopefully, I (and you, my dear sweet reader) will never encounter them again. This time it's KMeans edition."
+description: "Data science interviewing is interesting. In this several part series, I will explain/implement solutions to problems that I have come across during the data science interview process. These posts serve as practice, but I hope that others will find them useful as well. This time it's KMeans edition."
 ---
 
-Data science is a broad field, which results in an extremely varied interviewing process. It's like the Wild West; there are no rules, no structure, nothing... During a past interview, I was subjected to an hour and a half coding challenge in which I was asked to implement KMeans from scratch in my programing language of choice. Giddy up cowperson, in this post, I'll provide an overview of KMeans followed by my basic implementation of it in Python.
+Data science is a broad field, which results in an extremely varied interview process. It's like the Wild West; there are no rules, no structure, nothing... During a past interview, I was subjected to an hour and a half coding challenge in which I was asked to implement KMeans from scratch in my programing language of choice. Giddy up cowperson, in this post, I'll provide an overview of KMeans followed by my basic implementation of it in Python.
 
 ![](wildwest.jpeg)
 
@@ -20,7 +20,7 @@ It assumes that...
 
 KMeans divides the data into a predetermined number (_k_) of clusters with a center point known as the centroid. The KMeans algorithm minimizes the sum of squares distance between every obervation and its centroid, maximizing the sum of squares distance between clusters.
 
-KMeans has applications in customer segmentation, document classification, basic recommendation systems, etc. As a side note, I used KMeans in my personal projet spotihue to find the most prominent colors in the album artwork of the currently playing song on my Spotify account. I'll discuss this project in more detail in a future blog post.
+KMeans has applications in customer segmentation, document classification, basic recommendation systems, etc. As a side note, I used KMeans in my personal projet SpotiHue to find the most prominent colors in the album artwork of the currently playing song on my Spotify account. I'll discuss this project in more detail in a future blog post.
 
 ## Basic Implementation of KMeans in Python
 
@@ -97,7 +97,7 @@ scikit-learn's implementation: [[5.006      3.428      1.462      0.246     ]
 
 ```
 
-Success! Now, please don't ever make me implement this during an interview ever again.
+Success!
 
 ## Full Code
 

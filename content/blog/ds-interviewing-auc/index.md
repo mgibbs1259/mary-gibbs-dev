@@ -1,7 +1,7 @@
 ---
 title: "Data Science Interviewing Pt. 2: Area Under the Curve Edition"
 date: "2022-04-15"
-description: "Data science interviewing is broken. In this several part series, I will explain/implement solutions to problems that I have come across during the data science interview process that I thought were not really effective at gauging a candidate's skills. Hopefully, I (and you, my dear sweet reader) will never encounter them again. This time it's Area Under the Curve edition."
+description: "Data science interviewing is interesting. In this several part series, I will explain/implement solutions to problems that I have come across during the data science interview process. These posts serve as practice, but I hope that others will find them useful as well. This time it's Area Under the Curve edition."
 ---
 
 During a past interview, I was subjected to an hour take-home coding challenge in which I was asked to implement various coding exercises from scratch in my programming language of choice. In this post, I'll provide an overview of one of the exercises from that coding challenge, which was to calculate the area under the curve given a set of points using the trapezoidal rule, and a basic implementation of it in Python.
