@@ -1,10 +1,10 @@
 ---
 title: "Data Science Interviewing Pt. 1: KMeans Edition"
 date: "2022-03-12"
-description: "Data science interviewing is broken. In this several part series, I will explain/implement solutions to problems that I have come across during the data science interview process that I thought were not really effective at gauging a candidate's skills. Hopefully, I (and you, my dear sweet reader) will never encounter them again."
+description: "Data science interviewing is interesting. In this several part series, I will explain/implement solutions to problems that I have come across during the data science interview process. These posts serve as practice, but I hope that others will find them useful as well. This time it's KMeans edition."
 ---
 
-Data science is a broad field, which results in an extremely varied interviewing process. It's like the Wild West; there are no rules, no structure, nothing... During a past interview, I was subjected to an hour and a half coding challenge in which I was asked to implement KMeans from scratch in my programing language of choice. Giddy up cowperson, in this post, I'll provide an overview of KMeans followed by my basic implementation of it in Python.
+Data science is a broad field, which results in an extremely varied interview process. It's like the Wild West; there are no rules, no structure, nothing... During a past interview, I was subjected to an hour and a half coding challenge in which I was asked to implement KMeans from scratch in my programing language of choice. Giddy up cowperson, in this post, I'll provide an overview of KMeans followed by my basic implementation of it in Python.
 
 ![](wildwest.jpeg)
 
@@ -20,7 +20,7 @@ It assumes that...
 
 KMeans divides the data into a predetermined number (_k_) of clusters with a center point known as the centroid. The KMeans algorithm minimizes the sum of squares distance between every obervation and its centroid, maximizing the sum of squares distance between clusters.
 
-KMeans has applications in customer segmentation, document classification, basic recommendation systems, etc. As a side note, I used KMeans in my personal projet spotihue to find the most prominent colors in the album artwork of the currently playing song on my Spotify account. I'll discuss this project in more detail in a future blog post.
+KMeans has applications in customer segmentation, document classification, basic recommendation systems, etc. As a side note, I used KMeans in my personal projet SpotiHue to find the most prominent colors in the album artwork of the currently playing song on my Spotify account. I'll discuss this project in more detail in a future blog post.
 
 ## Basic Implementation of KMeans in Python
 
@@ -70,6 +70,7 @@ def stop_kmeans(
         return True
     return (previous_centroids == centroids).all()
 
+
 def perform_kmeans(data: np.ndarray, k: int, max_interations: int) -> np.ndarray:
     centroids = initalize_centroids(iris_data.data, k)
 
@@ -94,10 +95,9 @@ My implementation: [[5.006      3.428      1.462      0.246     ]
 scikit-learn's implementation: [[5.006      3.428      1.462      0.246     ]
  [5.9016129  2.7483871  4.39354839 1.43387097]
  [6.85       3.07368421 5.74210526 2.07105263]]
-
 ```
 
-Success! Now, please don't ever make me implement this during an interview ever again.
+Success!
 
 ## Full Code
 
@@ -110,32 +110,73 @@ from sklearn.cluster import KMeans
 
 
 def initalize_centroids(data: np.ndarray, k: int) -> np.ndarray:
+    """Initializes the centroids for the K-means clustering algorithm
+
+    Args:
+        data (np.ndarray): Input data
+        k (int): Number of clusters
+
+    Returns:
+        np.ndarray: The initial centroids
+    """
     rng = np.random.default_rng()
     initial_centroids = rng.choice(data, k, axis=0)
     return initial_centroids
 
 
 def assign_points_to_centroids(data: np.ndarray, k: int, centroids: np.ndarray) -> list:
+    """Assigns each data point to the nearest centroid
+
+    Args:
+        data (np.ndarray): Input data
+        k (int): Number of clusters
+        centroids (np.ndarray): Current centroids
+
+    Returns:
+        list: The cluster assignments for each data point
+    """
     distances = np.empty(shape=(data.shape[0], k))
     for i in range(k):
-        distances[:, i] = np.sqrt(np.sum((data-centroids[i])**2, axis=1))
+        distances[:, i] = np.sqrt(np.sum((data - centroids[i]) ** 2, axis=1))
     assigned_centroids = distances.argmin(axis=1)
     return assigned_centroids
 
 
 def update_centroids(data: np.ndarray, k: int, assigned_centroids: list) -> np.ndarray:
+    """Updates each centroid by computing the mean using
+    all of the data points assigned to the centroid
+
+    Args:
+        data (np.ndarray): Input data
+        k (int): Number of clusters
+        assigned_centroids (list): Cluster assignments for each data point
+
+    Returns:
+        np.ndarray: The updated centroids
+    """
     updated_centroids = np.empty(shape=(k, data.shape[1]))
     for i in range(k):
-        updated_centroids[i, :] = (data[assigned_centroids == i].mean(axis=0))
+        updated_centroids[i, :] = data[assigned_centroids == i].mean(axis=0)
     return updated_centroids
 
 
 def stop_kmeans(
-        iterations: int,
-        max_interations: int,
-        previous_centroids: np.ndarray,
-        centroids: np.ndarray
+    iterations: int,
+    max_interations: int,
+    previous_centroids: np.ndarray,
+    centroids: np.ndarray,
 ) -> bool:
+    """Checks the stopping criterion for the K-means algorithm
+
+    Args:
+        iterations (int): Current number of iterations
+        max_iterations (int): Maximum number of iterations
+        previous_centroids (np.ndarray): The previous centroids
+        centroids (np.ndarray): The current centroids
+
+    Returns:
+        bool: True if the algorithm should stop, False otherwise
+    """
     if iterations > max_interations:
         logging.info(f"Max iteractions {max_interations} reached")
         return True
@@ -143,6 +184,16 @@ def stop_kmeans(
 
 
 def perform_kmeans(data: np.ndarray, k: int, max_interations: int) -> np.ndarray:
+    """Performs K-means clustering on the input data
+
+    Args:
+        data (np.ndarray): Input data
+        k (int): Number of clusters
+        max_iterations (int): Maximum number of iterations
+
+    Returns:
+        np.ndarray: The final centroids
+    """
     centroids = initalize_centroids(iris_data.data, k)
 
     iterations = 0
@@ -163,5 +214,5 @@ if __name__ == "__main__":
     print(f"My implementation: {centroids}\n")
 
     sklearn_kmeans_centroids = KMeans(n_clusters=3, random_state=0).fit(iris_data.data)
-    print(f"scikit-learn's implementation: {sklearn_kmeans_centroids.cluster_centers_}")
+    print(f"scikit-learn implementation: {sklearn_kmeans_centroids.cluster_centers_}")
 ```
