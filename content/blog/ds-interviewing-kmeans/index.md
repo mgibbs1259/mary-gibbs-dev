@@ -1,5 +1,5 @@
 ---
-title: "Data Science Interviewing Pt. 2: KMeans Edition"
+title: "Data Science Interviewing Pt. 1: KMeans Edition"
 date: "2022-03-12"
 description: "Data science interviewing is interesting. In this several part series, I will explain/implement solutions to problems that I have come across during the data science interview process. These posts serve as practice, but I hope that others will find them useful as well. This time it's KMeans edition."
 ---
