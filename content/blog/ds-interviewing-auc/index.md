@@ -20,14 +20,12 @@ ROC curves are typically used to evaluate binary classification models by illust
 
 > Let's assume that you, the reader, go on a fishing trip and you only want to catch mahi-mahi.
 >
-> -    True Positive Rate: TPR = True Positives / (True Positives + False Negatives)
-> -    False Positive Rate: FPR = False Positives / (False Positives + True Negatives)
->
-> The trade-off
+> -    True Positive Rate: Measures the proportion of mahi-mahi that you successfully caught out of all of the mahi-mahi present in the ocean. TPR = True Positives / (True Positives + False Negatives)
+> -    False Positive Rate: Measures the proportion of non-mahi-mahi that you caught that were incorrectly identified as mahi-mahi. FPR = False Positives / (False Positives + True Negatives)
 
-ROC curves are created by plotting the TPR on the y-axis and the FPR on the x-axis at different classification thresholds.
+ROC curves are created by plotting the TPR on the y-axis and the FPR on the x-axis at different classification thresholds. The optimal point on a ROC curve will depend on the problem.
 
-PR curves are typically used to evaluate binary classification models, especially when your data has a class imbalance, by illustrating the trade-off between precision and recall. Another quick refresher, but this time on precision and recall...
+PR curves are typically used to evaluate binary classification models by illustrating the trade-off between precision and recall. Another quick refresher, but this time on precision and recall...
 
 > Let's assume that you, the reader, go on another fishing trip and you still only want to catch mahi-mahi.
 >
