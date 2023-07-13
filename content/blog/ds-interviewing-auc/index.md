@@ -10,6 +10,8 @@ During a past interview, I was subjected to an hour take-home coding challenge i
 
 The trapezoidal rule is an integration technique used to approximate the definite integral of a function. It divides the area under a curve into a series of trapezoids and calculates the sum of their areas to estimate the integral.
 
+![](trapezoidal-rule.jpeg)
+
 ## How does this Relate to Data Science?
 
 There are several potential applications of the trapezoidal rule in data science, but the one I want to focus on in this section is evaluation metrics.
