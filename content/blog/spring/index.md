@@ -1,7 +1,7 @@
 ---
 title: spring
 date: "2023-07-26"
-description: "spring is my latest personal project. It leverages the capabilities of Ring cameras and Rachio sprinklers to orchestrate a harmonious collaboration between surveillance and irrigation systems. I'll discuss spring in further detail in this blog post."
+description: "spring is my latest personal project. It leverages the capabilities of Ring cameras and Rachio sprinklers to orchestrate a hilarious collaboration between surveillance and irrigation systems. I'll discuss spring in further detail in this blog post."
 ---
 
 # Inspiration
