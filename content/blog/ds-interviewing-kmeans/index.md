@@ -6,7 +6,7 @@ description: "Data science interviewing is interesting. In this several part ser
 
 Data science is a broad field, which results in an extremely varied interview process. It's like the Wild West; there are no rules, no structure, nothing... During a past interview, I was subjected to an hour and a half coding challenge in which I was asked to implement KMeans from scratch in my programing language of choice. Giddy up cowperson, in this post, I'll provide an overview of KMeans followed by my basic implementation of it in Python.
 
-![](wildwest.jpeg)
+![](wildwest.jpg)
 
 ## What is KMeans?
 

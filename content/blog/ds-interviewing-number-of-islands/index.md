@@ -48,7 +48,7 @@ Constraints:
 ## How does this Relate to Data Science?
 The Number of Islands problem relates to data science in the context of graph theory and connectivity analysis, which are important in various data science applications. 
 
-## Overall
+## Overview
 The 2D grid map can be treated as a undirected graph. Each cell in the grid represents a node, and edges exist between nodes if they are horizontally or vertically adjacent and both are land ('1'). The goal is to count the number of connected components in the graph (islands).
 
 ![](example.jpg)
